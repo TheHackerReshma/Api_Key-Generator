@@ -1,67 +1,77 @@
-# Api_Key-Generator
-An API Key Generator is a tool that creates unique authentication keys used to access APIs securely. These keys help control access to a service and prevent unauthorized use.
+# API Key Generator & Scanner
 
-My API Key Generator script scans a website for API keys and also generates random API keys for testing.
-How to Run the API Key Generator in Python
-1. Ensure Dependencies Are Installed
-Your script requires:
+A Python tool to scan websites for exposed API keys and generate test keys.
 
-requests → For making web requests.
-beautifulsoup4 → For parsing website content.
-re (Regex) → For pattern matching.
-Install them using:
+## Features
+- Scan websites for exposed API keys
+- Identify API key types (Google, AWS, Stripe, JWT, etc.)
+- Generate random API keys for testing
+- Provide exploitation risk details
 
-bash
-Copy
-Edit
+## Installation
+### Prerequisites
+Ensure you have Python 3.x installed. If not, download it from [Python.org](https://www.python.org/).
+
+### Install Dependencies
+Run the following command to install required packages:
+```bash
 pip install requests beautifulsoup4
-2. Navigate to the Script Location
-If your script is in WSL (Kali Linux), move to its directory:
-cd /home/your-username/
-Or in Windows (CMD/PowerShell):
+```
 
-powershell
-Copy
-Edit
-cd C:\Users\yourname\Desktop
-3. Run the Python Script
-Run the script using:
-
-bash
-Copy
-Edit
+## Usage
+### Run the Script
+```bash
 python api_scanner.py
-Or if using Python 3:
-
-bash
-Copy
-Edit
+```
+or  
+```bash
 python3 api_scanner.py
-4. Enter a Website URL
-The script will ask for a website URL:
+```
 
-mathematica
-Copy
-Edit
+### Enter a Website URL
+The script will prompt you:
+```
 Enter the website URL: https://example.com
-It will then scan for exposed API keys and display results.
+```
+It will scan the site and display API keys (if found).
 
-Example Output
-yaml
-
+## Example Output
+```
 Enter the website URL: https://example.com
+
 APIs found:
 API: AIzaSyD1s2E3f4G5h6J7K8L9M0N1P2Q3R4S5T6
 Type: Google API Key
 Generated API Key: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
 Potential Exploit: Can be used to access Google services like Maps, Cloud, and more if improperly secured.
-Alternative: Running in WSL
+```
+If no API keys are found:
+```
+No API keys found on the website.
+```
 
-If your script is in WSL (Kali Linux) but you want to run it in Windows, copy the file first:
-bash:
-cp api_scanner.py /mnt/c/Users/yourname/Desktop/
+## Supported API Key Types
+- Google API Keys (`AIza...`)
+- AWS API Keys (`AKIA...`)
+- Stripe API Keys (`sk_live_...`)
+- JWT Tokens (`eyJ...`)
+- More can be added easily!
 
-Then run it from Windows:
-powershell:
-python C:\Users\yourname\Desktop\api_scanner.py
+## How It Works
+1. The script fetches the website’s HTML source code.
+2. Uses Regular Expressions (Regex) to scan for API keys.
+3. Identifies the type of API key.
+4. Generates random test API keys.
+5. Shows potential security risks for exposed keys.
+
+## Disclaimer
+- This tool is intended for **educational and security testing purposes only**.
+- Do **not** use it on websites without permission.
+- The developer is **not responsible** for any misuse.
+
+## License
+This project is licensed under the **MIT License**. Feel free to modify and use it!
+
+## Contributing
+Want to improve this tool? Fork the repo and submit a PR!
 
